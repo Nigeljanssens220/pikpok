@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import Script from "next/script";
+import { PlausibleProvider } from "./_providers/plausible";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -16,7 +18,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <PlausibleProvider domain="pikpok.vercel.app" />
+        <Script src="https://scripts.simpleanalyticscdn.com/latest.js" />
+      </head>
       <body className={inter.className}>{children}</body>
     </html>
   );
 }
+
